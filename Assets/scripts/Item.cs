@@ -5,6 +5,10 @@ using UnityEngine.EventSystems;
 
 public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
+    
+    // CHANGE INTO SCRIPTABLE OBJECTS
+    
+    
     [SerializeField] Constants.Elements element;
     //[SerializeField] Constants.Colors color;
     [SerializeField] Constants.Aspects aspect;
