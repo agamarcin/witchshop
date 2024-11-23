@@ -22,6 +22,17 @@ public class Constants : MonoBehaviour
         SPIRIT
     }
     
+    public enum Aspects : int
+    {
+        LUCK,
+        WISDOM,//likes mana
+        PATIENCE,//likes strength
+        COURAGE,//likes love
+        MANA,//likes wisdom
+        LOVE,//likes courage
+        STRENGTH//likes patience
+    }   
+    
     public enum Colors : int
     {
         WHITE,

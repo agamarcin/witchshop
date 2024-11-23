@@ -10,8 +10,20 @@ public class GameController : MonoBehaviour
     //add cupboard taht holds items??
     
     //add fction checking current ritual with possible rituals
-    
-    // Start is called before the first frame update
+
+    [SerializeField] Talisman WIPTalisman;
+
+
+    public void resetTalisman(){
+        foreach (Item item in WIPTalisman.getSupportingItems())
+        {
+            item.resetPosition();
+        }
+        WIPTalisman.getBaseItem().resetPosition();
+
+        WIPTalisman.clearItems();
+        WIPTalisman.calcAspect();
+    }
     void Start()
     {
         
