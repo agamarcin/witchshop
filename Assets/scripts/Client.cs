@@ -27,4 +27,9 @@ public class Client : MonoBehaviour{
     {
         
     }
+
+    public void setClient(GameObject client){
+        
+        
+    }
 }

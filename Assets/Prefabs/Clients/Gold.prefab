@@ -38,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 97}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 1020, y: 435}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7274539249366571209
 CanvasRenderer:
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 8facff111352b1ddebf380020faa725b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Gold
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 8facff111352b1ddebf380020faa725b, type: 3}
   neededAspect: 0
   neededValue: 10
 --- !u!1 &7604414489122557120

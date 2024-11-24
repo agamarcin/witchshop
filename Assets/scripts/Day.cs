@@ -25,6 +25,11 @@ public class Day : MonoBehaviour{
         
     }
 
+    public void newClient(){
+        
+        clientsForDay.RemoveAt(0);
+    }
+
     public void setAmountOfClients(int amountOfClients){
         this.amountOfClients = amountOfClients;
     }
