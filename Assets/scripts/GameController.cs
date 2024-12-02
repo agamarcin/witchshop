@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -23,6 +24,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private List<GameObject> clientsForDay;
     [SerializeField] private GameObject currentClient;
     
+    [SerializeField] private List<ItemSlot> itemSlots;
+    
     
     [SerializeField] Day day;
     [SerializeField] Canvas gameCanvas;
@@ -31,21 +34,24 @@ public class GameController : MonoBehaviour
     public void startADay(){
         //MAKE IT MORE RANDOMIZED, ADD SCRIPTED DAYS (TUTORIAL?)
 
-        
-        
          Debug.Log("starting a day");
          setAmountOfClients(Mathf.Min(day.DayNumber, availableClients.Count));
          setClientsForDay();
          setNewClient();
+             
 
-         
-         
-        }
+    }
 
     public void setNewClient(){
-        currentClient=Instantiate(clientsForDay[0], new Vector3(0, 0, 0), Quaternion.identity);
-        currentClient.transform.SetParent(gameCanvas.transform, false);
-        currentClient.transform.SetSiblingIndex(1);
+        if(clientsForDay.Count()>0){
+            currentClient = Instantiate(clientsForDay[0], new Vector3(0, 0, 0), Quaternion.identity);
+            currentClient.transform.SetParent(gameCanvas.transform, false);
+            currentClient.transform.SetSiblingIndex(1);
+        }
+        else
+        {
+            Debug.Log("No clients available, end the day");
+        }
     }
     
     public void setClientsForDay(){
@@ -62,6 +68,10 @@ public class GameController : MonoBehaviour
     
     public void setAmountOfClients(int amountOfClients){
         this.amountOfClients = amountOfClients;
+    }
+
+    public void makeCharm(){
+        Debug.Log("makeCharm");
     }
     
     public void resetTalisman(){
