@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Talisman : MonoBehaviour, IDropHandler
+public class Spell : MonoBehaviour, IDropHandler
 {
     [SerializeField] Constants.Elements element;
     [SerializeField] Item baseItem;
@@ -14,6 +14,17 @@ public class Talisman : MonoBehaviour, IDropHandler
     [SerializeField] Constants.Aspects mainAspect;
     
     [SerializeField] TextMeshProUGUI text;
+    [SerializeField] private Sprite sprite;
+
+    public Spell(Item item){
+        Debug.Log("spell called");
+        //baseItem = item;
+        //int index = Random.Range(1, 12);
+        //string nazwa="tal"+index+".png";
+        //sprite = Resources.Load<Sprite>("/img/spells/" + nazwa);
+        //sprite=Resources.Load<Sprite>("../img/spells/"+nazwa);
+        //Debug.Log("item: "+item.gameObject.name+" sprite: "+nazwa);
+    }
 
     public Constants.Aspects calcAspect(){
         if (baseItem == null)

@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
     
     //add fction checking current ritual with possible rituals
 
-    [SerializeField] Talisman WIPTalisman;
+    [SerializeField] GameObject WIPSpell;
     
     [SerializeField] List<GameObject> availableClients;
     
@@ -70,19 +70,54 @@ public class GameController : MonoBehaviour
         this.amountOfClients = amountOfClients;
     }
 
-    public void makeCharm(){
-        Debug.Log("makeCharm");
+    public void makeSpell(){
+        Debug.Log("makeSpell");
+        foreach(ItemSlot itS in itemSlots){
+            if(itS.getItem()!=null)
+            {
+                Item it = itS.getItem();
+                GameObject temp = Resources.Load("prefabs/spells/spell1") as GameObject;
+                WIPSpell = Instantiate(temp, new Vector3(0, 0, 0), Quaternion.identity);
+                WIPSpell.transform.SetParent(gameCanvas.transform, false);
+                WIPSpell.transform.position=itemSlots[0].transform.position;
+                //WIPSpell = Instantiate(Resources.Load("MyPrefab") as GameObject, new Vector3(0, 0, 0), Quaternion.identity);
+                break;
+                /*
+                Item it = itS.getItem();
+                GameObject exampleOne = new GameObject("spell", typeof(Spell));
+                exampleOne.GetComponent<Spell>(). = new Spell(it);
+                WIPSpell = exampleOne.GetComponent<Spell>();
+                Instantiate(WIPSpell, new Vector3(0, 0, 0), Quaternion.identity);
+                WIPSpell.transform.SetParent(gameCanvas.transform, false);
+                WIPSpell.transform.position=itemSlots[0].transform.position;
+
+                Item it = itS.getItem();
+                GameObject exampleOne = new GameObject("spell",new Spell(it));
+                //exampleOne.AddComponent<Spell>();
+                //Spell temp = new Spell(it);
+                WIPSpell = exampleOne.GetComponent<Spell>();
+                Instantiate(WIPSpell, new Vector3(0, 0, 0), Quaternion.identity);
+                WIPSpell.transform.SetParent(gameCanvas.transform, false);
+                WIPSpell.transform.position=itemSlots[0].transform.position;
+                it.resetItemSlot();
+                Destroy(it.gameObject);
+                */
+            }
+        }
+        //currentClient.transform.SetParent(gameCanvas.transform, false);
+        //currentClient.transform.SetSiblingIndex(1);
+        
     }
     
-    public void resetTalisman(){
-        foreach (Item item in WIPTalisman.getSupportingItems())
-        {
-            item.resetPosition();
-        }
-        WIPTalisman.getBaseItem().resetPosition();
+    public void resetSpell(){
+        //foreach (Item item in WIPSpell.getSupportingItems())
+        //{
+        //    item.resetPosition();
+        //}
+        //WIPSpell.getBaseItem().resetPosition();
 
-        WIPTalisman.clearItems();
-        WIPTalisman.calcAspect();
+        //WIPSpell.clearItems();
+        //WIPSpell.calcAspect();
     }
     void Start()
     {

@@ -13,11 +13,16 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         if (eventData.pointerDrag != null) {
             eventData.pointerDrag.GetComponent<Transform>().position = GetComponent<Transform>().position;
             setItem(eventData.pointerDrag.GetComponent<Item>());
+            item.setItemSlot(this);
         }
     }
 
     public void setItem(Item newItem){
         item = newItem;
+    }
+
+    public Item getItem(){
+        return item;
     }
     
     

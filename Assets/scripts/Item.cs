@@ -43,6 +43,7 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     }
     public void OnBeginDrag(PointerEventData eventData){
         Debug.Log("BeginDrag");
+        resetItemSlot();
         //image.raycastTarget = false;
         canvasGroup.blocksRaycasts = false;
     }
@@ -52,23 +53,38 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         //transform.anchoredPosition+= eventData.delta;//divide by canvas scaleFactor if movement problems
     }
     public void OnEndDrag(PointerEventData eventData){
-        Debug.Log("EndDrag");
-        if(eventData.pointerDrag != null){
+        
+        //if(eventData.pointerDrag != null){
             //check if it actually dropped in item slot
+            //eventData.pointerDrag.GetComponent<Transform>().position = GetComponent<Transform>().position;
+            //setItemSlot(eventData.pointerDrag.GetComponent<ItemSlot>());
+            Debug.Log("EndDrag");
+
             //itemSlot=eventData.pointerDrag.GetComponent<ItemSlot>();
             //itemSlot.setItem(this);
-        }else{
+        //}else{
             //itemSlot.setItem(null);
             //itemSlot=null;
-        }
+        //}
         //image.raycastTarget = true;
         canvasGroup.blocksRaycasts = true;
     }
 
     public void OnDrop(PointerEventData eventData){
-        throw new System.NotImplementedException();
+        Debug.Log("OnDrop");
     }
 
+    public void setItemSlot(ItemSlot itemSlot){
+        this.itemSlot = itemSlot;
+    }
+
+    public void resetItemSlot(){
+        if (itemSlot != null)
+        {
+            itemSlot.setItem(null);
+            setItemSlot(null);
+        }
+    }
 
     public Constants.Aspects getAspect(){
         return aspect;
