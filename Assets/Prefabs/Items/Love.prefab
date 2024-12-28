@@ -92,11 +92,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   element: 3
-  aspect: 5
+  value: 5
+  strength: 2
   transform: {fileID: 5068251454673658495}
   defaultX: 0
   defaultY: 0
   canvasGroup: {fileID: 5862932423866090607}
+  image: {fileID: 0}
+  itemSlot: {fileID: 0}
   sprite: {fileID: 21300000, guid: 9f3328106024dd4cfacffb9c20317159, type: 3}
 --- !u!114 &5458834587721082404
 MonoBehaviour:

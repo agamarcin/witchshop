@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
+
+using static Constants;
 
 public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
@@ -10,10 +13,11 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     // CHANGE INTO SCRIPTABLE OBJECTS
     
     
-    [SerializeField] Constants.Elements element;
-    [SerializeField] Constants.Aspects aspect;
+    [SerializeField] Elements element;
+    [FormerlySerializedAs("aspect")] [SerializeField] Values value;
+    [SerializeField] int strength;
     [SerializeField] Transform transform;
-    [SerializeField] int defaultX, defaultY;
+    [SerializeField] float defaultX, defaultY;
     [SerializeField] CanvasGroup canvasGroup;
     [SerializeField] Image image;
     
@@ -43,12 +47,14 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     }
     public void OnBeginDrag(PointerEventData eventData){
         Debug.Log("BeginDrag");
+        defaultX = eventData.position.x;
+        defaultY = eventData.position.y;
         resetItemSlot();
         //image.raycastTarget = false;
         canvasGroup.blocksRaycasts = false;
     }
     public void OnDrag(PointerEventData eventData){
-        Debug.Log("Drag");
+        //Debug.Log("Drag");
         transform.position = eventData.position;
         //transform.anchoredPosition+= eventData.delta;//divide by canvas scaleFactor if movement problems
     }
@@ -86,19 +92,22 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         }
     }
 
-    public Constants.Aspects getAspect(){
-        return aspect;
+    public int getStrength(){
+        return strength;
+    }
+    public Values GetValue(){
+        return value;
     }
 
     public Constants.Elements getElement(){
         return element;
     }
 
-    public int getDefaultX(){
+    public float getDefaultX(){
         return defaultX;
     }
 
-    public int getDefaultY(){
+    public float getDefaultY(){
         return defaultY;
     }
 

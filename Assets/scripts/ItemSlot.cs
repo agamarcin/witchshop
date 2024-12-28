@@ -5,6 +5,14 @@ using UnityEngine.EventSystems;
 
 public class ItemSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
+    // MAKE SEPARETE CLASS FOR BASE ITEM SLOT
+    
+    //if item dropped into slot without item
+    //if item dropped into slot with item?
+    //takin out item (reset to shelf)
+    //if dropping spell into slot
+    
+    
     //[SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private Item item;
     public void OnDrop(PointerEventData eventData){

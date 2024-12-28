@@ -11,6 +11,8 @@ public class GameController : MonoBehaviour
     //PRZECHOWUJE AKTUALNIE AKCEPTOWALNY RYTUAŁY???
     
     //add cupboard taht holds items??
+    //add calendar
+    //add cupboard for spells
     
     //add fction checking current ritual with possible rituals
 
@@ -50,6 +52,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
+            //leave time for player to experiment with crafting?
             Debug.Log("No clients available, end the day");
         }
     }

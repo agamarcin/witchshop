@@ -4,14 +4,21 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Spell : MonoBehaviour, IDropHandler
+using static Constants;
+
+
+public class Spell : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
-    [SerializeField] Constants.Elements element;
+    [SerializeField] Elements element;
+    [SerializeField] int strength;
+    [SerializeField] int stability;
+    [SerializeField] List<int> values;
     [SerializeField] Item baseItem;
     [SerializeField] List<Item> supportingItems;
+    [SerializeField] CanvasGroup canvasGroup;
     
 
-    [SerializeField] Constants.Aspects mainAspect;
+    //[SerializeField] Constants.Values mainAspect;
     
     [SerializeField] TextMeshProUGUI text;
     [SerializeField] private Sprite sprite;
@@ -26,16 +33,17 @@ public class Spell : MonoBehaviour, IDropHandler
         //Debug.Log("item: "+item.gameObject.name+" sprite: "+nazwa);
     }
 
-    public Constants.Aspects calcAspect(){
+    public Values calcAspect(){
         if (baseItem == null)
         {
             text.text = "no aspect";
-            return Constants.Aspects.LUCK;
+            return Constants.Values.NUA;
         }
-        mainAspect = baseItem.getAspect();
-        text.text = mainAspect.ToString();
-        return mainAspect;
-        
+        //mainAspect = baseItem.getAspect();
+        //text.text = mainAspect.ToString();
+        //return mainAspect;
+        return Values.NUA;
+
     }
 
     public void setMainItem(Item item){
@@ -58,6 +66,60 @@ public class Spell : MonoBehaviour, IDropHandler
     void Update()
     {
         
+    }
+    
+    
+    public void OnPointerDown(PointerEventData eventData){
+        Debug.Log("OnPointerDown");
+    }
+    public void OnBeginDrag(PointerEventData eventData){
+        Debug.Log("BeginDrag");
+        //resetItemSlot();
+        //image.raycastTarget = false;
+        canvasGroup.blocksRaycasts = false;
+    }
+    public void OnDrag(PointerEventData eventData){
+        Debug.Log("Drag");
+        transform.position = eventData.position;
+        //transform.anchoredPosition+= eventData.delta;//divide by canvas scaleFactor if movement problems
+    }
+    public void OnEndDrag(PointerEventData eventData){
+        
+        //if(eventData.pointerDrag != null){
+        //check if it actually dropped in item slot
+        //eventData.pointerDrag.GetComponent<Transform>().position = GetComponent<Transform>().position;
+        //setItemSlot(eventData.pointerDrag.GetComponent<ItemSlot>());
+        Debug.Log("EndDrag");
+
+        //itemSlot=eventData.pointerDrag.GetComponent<ItemSlot>();
+        //itemSlot.setItem(this);
+        //}else{
+        //itemSlot.setItem(null);
+        //itemSlot=null;
+        //}
+        //image.raycastTarget = true;
+        canvasGroup.blocksRaycasts = true;
+    }
+    
+
+    public void setValue(int index, int value){
+        values[index] = value;
+    }
+
+    public void setElement(Elements element){
+        this.element = element;
+    }
+
+    public void setStrength(int strength){
+        this.strength = strength;
+    }
+
+    public void setStability(int stability){
+        this.stability = stability;
+    }
+
+    public int getValue(int index){
+        return values[index];
     }
 
    public void clearItems(){

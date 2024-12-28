@@ -14,7 +14,7 @@ public class Constants : MonoBehaviour
     }
     
     public enum Elements : int
-    {
+    {//change element into interface/class
         FIRE,
         AIR,
         WATER,
@@ -22,15 +22,25 @@ public class Constants : MonoBehaviour
         SPIRIT
     }
     
-    public enum Aspects : int
+    public enum Values : int
     {
-        LUCK,
+        
+        NUA,
+        LAO,
+        KORE,
+        TOA,
+        MUNU,
+        SUOS,
+        VAS,
+        EZRO//base item
+        
+        /*LUCK,
         WISDOM,//likes mana
         PATIENCE,//likes strength
         COURAGE,//likes love
         MANA,//likes wisdom
         LOVE,//likes courage
-        STRENGTH//likes patience
+        STRENGTH//likes patience*/
     }   
     
     public enum Colors : int
