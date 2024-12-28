@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,7 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     
     
     [SerializeField] private Elements element;
-    [FormerlySerializedAs("aspect")] [SerializeField] Values value;
+    [SerializeField] Values value;
     [SerializeField] private int strength;
     [SerializeField] private Transform transform;
     [SerializeField] private float defaultX, defaultY;
@@ -54,13 +55,18 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     }
 
     public void resetItemSlot(){
-        if (itemSlot != null){
+        if (itemSlot == null){
             return;
         }
 
         itemSlot.setItem(null);
             setItemSlot(null);
         
+    }
+
+    private void Awake(){
+        image = GetComponent<Image>();
+        image.sprite = sprite;
     }
 
     public int getStrength(){
