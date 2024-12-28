@@ -14,6 +14,9 @@ public class Client : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointe
     
     [FormerlySerializedAs("neededAspect")] [SerializeField]Values neededValue;
     [SerializeField]private int neededStrenght;
+    
+    public delegate void LeaveShopDelegate();
+    public static event LeaveShopDelegate OnLeave;
 
     void randomizeAspectAndValue(){
         neededValue = (Constants.Values)UnityEngine.Random.Range(0, 7);
@@ -35,12 +38,18 @@ public class Client : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointe
     }
 
     public void leaveShop(){
-        
+        Debug.Log("client leaving shop");
+        if(OnLeave != null)OnLeave();
+
     }
     
     public void OnDrop(PointerEventData eventData){
+        Debug.Log("dropped on client");
         if (eventData.pointerDrag != null) {
+            
+            Debug.Log("dropped something on client");
             if (eventData.pointerDrag.GetComponent<Spell>() !=null){
+                Debug.Log("dropped spell on client");
 
                 if (giveSpell(eventData.pointerDrag.GetComponent<Spell>())){
                     Debug.Log("right spell");

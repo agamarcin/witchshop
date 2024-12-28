@@ -43,10 +43,10 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     
 
     public void OnPointerDown(PointerEventData eventData){
-        Debug.Log("OnPointerDown");
+        //Debug.Log("OnPointerDown");
     }
     public void OnBeginDrag(PointerEventData eventData){
-        Debug.Log("BeginDrag");
+        //Debug.Log("BeginDrag");
         defaultX = eventData.position.x;
         defaultY = eventData.position.y;
         resetItemSlot();
@@ -64,7 +64,7 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             //check if it actually dropped in item slot
             //eventData.pointerDrag.GetComponent<Transform>().position = GetComponent<Transform>().position;
             //setItemSlot(eventData.pointerDrag.GetComponent<ItemSlot>());
-            Debug.Log("EndDrag");
+            //Debug.Log("EndDrag");
 
             //itemSlot=eventData.pointerDrag.GetComponent<ItemSlot>();
             //itemSlot.setItem(this);
@@ -77,7 +77,7 @@ public class Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     }
 
     public void OnDrop(PointerEventData eventData){
-        Debug.Log("OnDrop");
+        //Debug.Log("OnDrop");
     }
 
     public void setItemSlot(ItemSlot itemSlot){

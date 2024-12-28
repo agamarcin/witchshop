@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7274539249366571209}
   - component: {fileID: 6334601544150767098}
   - component: {fileID: 5432340830538694585}
+  - component: {fileID: -4534918869428437745}
   m_Layer: 5
   m_Name: Gold
   m_TagString: Untagged
@@ -91,5 +92,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Gold
   sprite: {fileID: 21300000, guid: 8facff111352b1ddebf380020faa725b, type: 3}
+  knowsMagic: 0
   neededValue: 10
   neededStrenght: 0
+--- !u!225 &-4534918869428437745
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141559911387330311}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

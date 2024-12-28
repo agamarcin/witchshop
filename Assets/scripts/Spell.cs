@@ -52,7 +52,7 @@ public class Spell : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
     }
 
     public void OnDrop(PointerEventData eventData){
-        Debug.Log("Dropped "+eventData.pointerDrag.name);
+        //Debug.Log("Dropped "+eventData.pointerDrag.name);
         setMainItem(eventData.pointerDrag.gameObject.GetComponent<Item>());
     }
     
@@ -79,7 +79,7 @@ public class Spell : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
         canvasGroup.blocksRaycasts = false;
     }
     public void OnDrag(PointerEventData eventData){
-        Debug.Log("Drag");
+        //Debug.Log("Drag");
         transform.position = eventData.position;
         //transform.anchoredPosition+= eventData.delta;//divide by canvas scaleFactor if movement problems
     }
@@ -89,7 +89,7 @@ public class Spell : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
         //check if it actually dropped in item slot
         //eventData.pointerDrag.GetComponent<Transform>().position = GetComponent<Transform>().position;
         //setItemSlot(eventData.pointerDrag.GetComponent<ItemSlot>());
-        Debug.Log("EndDrag");
+        //Debug.Log("EndDrag");
 
         //itemSlot=eventData.pointerDrag.GetComponent<ItemSlot>();
         //itemSlot.setItem(this);

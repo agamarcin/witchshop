@@ -17,7 +17,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
     [SerializeField] private Item item;
     public void OnDrop(PointerEventData eventData){
         //Debug.Log("Item dropped to slot");
-        Debug.Log("dropped to slot "+gameObject.name);
+        //Debug.Log("dropped to slot "+gameObject.name);
         if (eventData.pointerDrag != null) {
             eventData.pointerDrag.GetComponent<Transform>().position = GetComponent<Transform>().position;
             setItem(eventData.pointerDrag.GetComponent<Item>());

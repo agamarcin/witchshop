@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1583344016571914473}
   - component: {fileID: 2802495245732582874}
   - component: {fileID: 4210581072044900249}
+  - component: {fileID: 3749572942397107179}
   m_Layer: 5
   m_Name: Blair
   m_TagString: Untagged
@@ -91,5 +92,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Blair
   sprite: {fileID: 21300000, guid: fa0ba77c84b4ec625a5a0192a47fce08, type: 3}
+  knowsMagic: 0
   neededValue: 2
   neededStrenght: 0
+--- !u!225 &3749572942397107179
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7833212746435311399}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
