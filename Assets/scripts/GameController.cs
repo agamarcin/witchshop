@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Presets;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,10 +12,12 @@ public class GameController : MonoBehaviour{
     //add cupboard for spells
     
     [SerializeField] private List<GameObject> availableClients;
+    [SerializeField] private List<Preset> availableClientsPreset;
     
     [SerializeField] private int dayNumber;
     [SerializeField] private int amountOfClients;
     [SerializeField] private List<GameObject> clientsForDay;
+    [SerializeField] private List<Preset> clientsForDayPreset;
     [SerializeField] private GameObject currentClient;
     
     [SerializeField] private List<ItemSlot> itemSlots;
@@ -22,6 +25,7 @@ public class GameController : MonoBehaviour{
     
     [SerializeField] private Day day;
     [SerializeField] private Canvas gameCanvas;
+    [SerializeField] private GameObject dialogueBox;
 
     private void OnEnable(){
         Client.OnLeave += setNewClient;
@@ -48,12 +52,17 @@ public class GameController : MonoBehaviour{
             Destroy(currentClient);
             Debug.Log("destroyed client");
         }
-        if(clientsForDay.Count>0){
-            currentClient = Instantiate(clientsForDay[0], new Vector3(0, 0, 0), Quaternion.identity);
+        if(clientsForDayPreset.Count>0){
+            //currentClient = Instantiate(clientsForDay[0], new Vector3(0, 0, 0), Quaternion.identity);
+            currentClient = Resources.Load("prefabs/Clients/Client") as GameObject;
+            currentClient=Instantiate(currentClient, new Vector3(0, 0, 0), Quaternion.identity);
+            Debug.Log("applying preset: "+clientsForDayPreset[0].ApplyTo(currentClient));
+            //currentClient.GetComponent<Client>()=clientsForDayPreset[0];
             currentClient.transform.SetParent(gameCanvas.transform, false);
             currentClient.transform.SetSiblingIndex(1);
             Debug.Log("client entered shop");
-            clientsForDay.RemoveAt(0);
+
+            clientsForDayPreset.RemoveAt(0);
         }
         else
         {
@@ -69,12 +78,15 @@ public class GameController : MonoBehaviour{
         //possibly can be removed?
         clientsForDay.Clear();
         
-        List<GameObject> clients = new List<GameObject>(availableClients);
+        //List<GameObject> clients = new List<GameObject>(availableClients);
+        List<Preset> clientsPresets = new List<Preset>(availableClientsPreset);
         for (int i = 0; i < amountOfClients; i++){
-            int index = Random.Range(0, clients.Count);
-            clientsForDay.Add(clients[index]);
-            Debug.Log("added client: "+clientsForDay[i].name);
-            clients.RemoveAt(index);
+            int index = Random.Range(0, clientsPresets.Count);
+            clientsForDayPreset.Add(clientsPresets[index]);
+            //clientsForDay.Add(clients[index]);
+            Debug.Log("added client: "+clientsForDayPreset[i].name);
+            //clients.RemoveAt(index);
+            clientsPresets.RemoveAt(index);
         }
     }
     private void Start(){

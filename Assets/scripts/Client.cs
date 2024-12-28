@@ -1,13 +1,36 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using static Constants;
 public class Client : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler{
     
+    //add unlock condition
+    
+    //int relstionship=1
+    //if(right spell)&&(reletionship%5!=0) relationship+=2 //-=2 if wrong spell?
+    //if(reletionship%5==0)show additional dialogue option
+    //if(did the dialogue && right spell) relationship+=2
+    
+    //spell preset as expected spell?
+    //kept in a list, picked at random out of part of them
+    //with higher relationship make bigger range of possible spells
+    
+    //multidelegate interaction?
+    //dialogue class?
+    //void diague()->order||exchange||shop||order||dialogue
+    //void order()->give|| setup pickup date->dialogue->leave
+    //void exchange()->dialogue->leave
+    //void shop()->dialogue->leave
+    //give dialogue to game controller, game conroller show it in dialogue box
+    
     [SerializeField] private string name;
+    [SerializeField] private string dialogue;
     [SerializeField] private Sprite sprite;
     [SerializeField] private bool knowsMagic;
     
+    
+    [SerializeField] private Image image;
     //temporary
     [SerializeField]private Values neededValue;
     [SerializeField]private int neededStrenght;
@@ -18,6 +41,11 @@ public class Client : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointe
     private void randomizeAspectAndValue(){
         neededValue = (Values)UnityEngine.Random.Range(0, 7);
         neededStrenght = UnityEngine.Random.Range(1, 10);
+    }
+
+    private void Awake(){
+        image = GetComponent<Image>();
+        image.sprite = sprite;
     }
     
     private void Start()
