@@ -44,12 +44,13 @@ public class Client : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointe
     }
 
     private void Awake(){
-        image = GetComponent<Image>();
-        image.sprite = sprite;
+
     }
     
     private void Start()
     {
+        image = GetComponent<Image>();
+        image.sprite = sprite;
         //temporary fction
         randomizeAspectAndValue();
     }
@@ -105,6 +106,10 @@ public class Client : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointe
     public void OnPointerEnter(PointerEventData eventData){
     }
     public void OnPointerExit(PointerEventData eventData){
+    }
+
+    public string getDialogue(){
+        return dialogue;
     }
 
 }

@@ -35,10 +35,14 @@ Preset:
   - target: {fileID: 0}
     propertyPath: sprite
     value: 
-    objectReference: {fileID: 21300000, guid: fa0ba77c84b4ec625a5a0192a47fce08, type: 3}
+    objectReference: {fileID: 21300000, guid: 6ae106a567a865e5d89b0cf3fa4e837b, type: 3}
   - target: {fileID: 0}
     propertyPath: knowsMagic
     value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: image
+    value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: neededValue

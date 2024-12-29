@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.Presets;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -25,7 +26,7 @@ public class GameController : MonoBehaviour{
     
     [SerializeField] private Day day;
     [SerializeField] private Canvas gameCanvas;
-    [SerializeField] private GameObject dialogueBox;
+    [SerializeField] private TextMeshProUGUI dialogueBox;
 
     private void OnEnable(){
         Client.OnLeave += setNewClient;
@@ -40,7 +41,7 @@ public class GameController : MonoBehaviour{
         //MAKE IT MORE RANDOMIZED, ADD SCRIPTED DAYS (TUTORIAL?)
 
          Debug.Log("starting a day");
-         amountOfClients=Mathf.Min(dayNumber, availableClients.Count);
+         amountOfClients = 2;//Mathf.Min(dayNumber, availableClients.Count);
          setClientsForDay();
          setNewClient();
          dayNumber++;
@@ -56,12 +57,13 @@ public class GameController : MonoBehaviour{
             //currentClient = Instantiate(clientsForDay[0], new Vector3(0, 0, 0), Quaternion.identity);
             currentClient = Resources.Load("prefabs/Clients/Client") as GameObject;
             currentClient=Instantiate(currentClient, new Vector3(0, 0, 0), Quaternion.identity);
-            Debug.Log("applying preset: "+clientsForDayPreset[0].ApplyTo(currentClient));
+            Debug.Log("Aplpy client: "+clientsForDayPreset[0].name);
+            Debug.Log("applying preset: "+clientsForDayPreset[0].ApplyTo(currentClient.GetComponent<Client>()));
             //currentClient.GetComponent<Client>()=clientsForDayPreset[0];
             currentClient.transform.SetParent(gameCanvas.transform, false);
             currentClient.transform.SetSiblingIndex(1);
             Debug.Log("client entered shop");
-
+            showDialogue(currentClient.GetComponent<Client>().getDialogue());
             clientsForDayPreset.RemoveAt(0);
         }
         else
@@ -76,7 +78,8 @@ public class GameController : MonoBehaviour{
         Debug.Log("setClientsForDay "+dayNumber);
         
         //possibly can be removed?
-        clientsForDay.Clear();
+        //clientsForDay.Clear();
+        clientsForDayPreset.Clear();
         
         //List<GameObject> clients = new List<GameObject>(availableClients);
         List<Preset> clientsPresets = new List<Preset>(availableClientsPreset);
@@ -84,10 +87,17 @@ public class GameController : MonoBehaviour{
             int index = Random.Range(0, clientsPresets.Count);
             clientsForDayPreset.Add(clientsPresets[index]);
             //clientsForDay.Add(clients[index]);
+            Debug.Log("adding client: "+clientsPresets[index].name);
             Debug.Log("added client: "+clientsForDayPreset[i].name);
             //clients.RemoveAt(index);
             clientsPresets.RemoveAt(index);
         }
+        Debug.Log("clients for day: "+clientsForDayPreset.Count);
+    }
+
+    public void showDialogue(/*enum dialogueType,*/ string dialogue){
+        //dialogueBox.SetActive(true);
+        dialogueBox.text = dialogue;
     }
     private void Start(){
         dayNumber = 1;

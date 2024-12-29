@@ -743,7 +743,7 @@ MonoBehaviour:
   - {fileID: 1841048641}
   day: {fileID: 473271684}
   gameCanvas: {fileID: 1031437567}
-  dialogueBox: {fileID: 0}
+  dialogueBox: {fileID: 991609384}
 --- !u!4 &473271683
 Transform:
   m_ObjectHideFlags: 0
